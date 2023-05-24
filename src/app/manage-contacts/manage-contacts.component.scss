@@ -21,6 +21,22 @@ tbody , p{
 
 }
 
+select {
+  border: none;
+  color:#6E6E6E;
+}
+
+option {
+  background: white;
+  color:#6E6E6E;
+  font-size: 1em;
+  padding: 1.3rem;
+  border:1ps solid rgba(255, 255, 255 , 0.1);
+}
+option:hover{
+  background-color:#127ea8 !important;
+}
+
 .lists-table{
   color:#292A32;
 
