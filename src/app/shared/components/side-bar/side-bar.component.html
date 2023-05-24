@@ -1,22 +1,108 @@
-<div class="logo-con m-3 d-flex align-items-center position-relative">
-  <div class="logo d-flex justify-content-center align-items-center">
-    <span class="text-image">S</span>
+
+<div class="bg-white sidnav-container w-100 h-100">
+  <div class="d-flex justify-content-evenly py-1 align-items-center    sidnav-top">
+    <div class="image-div  my-auto "><img src="./assets/slider-01.jpg" class=" rounded-circle " alt="#"></div>
+  <div class="">
+  <h4 class="mb-0 pb-0 ">Ahmed Ali</h4>
+  <h6 class="mt-0 pt-0 ">Ahmed@gmail.com</h6>
   </div>
-  <span class="text-lg mx-2">engine</span>
-  <svg data-bs-dismiss="offcanvas" aria-label="Close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="toggle-sidebar-close position-absolute primary-color-c pointer-cur d-md-none bi bi-x-lg" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
-    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
-  </svg>
-  <span (click)="fixedSidebar($event.target)" class="d-none toggle-switch position-absolute d-md-flex justify-content-center align-items-center"></span>
-</div>
-<div class="shadow-bottom"></div>
- <ul class="sidebar-list list-unstyled px-3 pt-3">
-  <li  class="si-link d-flex align-items-center">
-    <a class="no-decoration d-flex align-items-center" style="padding: 1rem 0.95rem;" [routerLink]="['/messages']" routerLinkActive="active-sidebar" >
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
-        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
-      </svg>
-      <span class="c-4 fs-6 mx-2">Home</span>
-    </a>
+  <a href="">
+  <i class="fa-solid fa-ellipsis-vertical"></i>
+  </a>
+  </div>
+
+  <div class="sidnav-ul-container   ">
+  <ul class="list-unstyled ps-2  pt-2  left-ul    pb-0">
+  <li class="mb-4 mt-3  ">
+  <a routerLinkActive="active" routerLink="/dashboard" class=" ps-3 pe-5 p-2 ">
+    <i class="fa-brands fa-slack"></i>
+    Dashboard
+  </a>
   </li>
-</ul>
+  <li class="mb-4">
+  <a  routerLinkActive="active" routerLink="/message" class=" ps-3 pe-5 p-2 ">
+    <i class="fa-solid fa-envelope"></i>
+    Message
+  </a>
+  </li>
+  <li class="mb-4 ">
+  <a routerLinkActive="active" routerLink="/chats" class=" ps-3 pe-5 p-2">
+    <i class="fa-solid fa-comments"></i>
+    Chats
+  </a>
+  </li>
+  <li class="mb-4">
+  <a routerLinkActive="active" routerLink="/compaigns" class=" ps-3 pe-5 p-2">
+    <i class="fa-solid fa-bullhorn"></i>
+    Compaigns
+  </a>
+  </li>
+  <li class="mb-4">
+  <a routerLinkActive="active" routerLink="/templates" class=" ps-3 pe-5 p-2">
+    <i class="fa-solid fa-table-cells-large"></i>
+    Templates
+  </a>
+  </li>
+  <li class="mb-4" >
+  <a routerLinkActive="active" routerLink="/manage-contacts" class=" ps-3 pe-5 p-2" >
+    <i class="fa-solid fa-address-book text-nowrap"></i>
+    Manage Contacts
+  </a>
+  </li>
+  <li class="mb-4">
+  <a routerLinkActive="active" routerLink="/users" class=" ps-3 pe-5 p-2 pe-4">
+    <i class="fa-solid fa-user-group"></i>
+    Users
+  </a>
+  </li>
+  <li class="mb-4">
+  <a routerLinkActive="active" routerLink="/devices" class=" ps-3 pe-5 p-2 pe-3">
+    <i class="fa-solid fa-desktop"></i>
+    Devices
+  </a>
+  </li>
+  <li class="mb-4">
+  <a routerLinkActive="active" routerLink="/bot" class=" ps-3 pe-5 p-2 pe-4">
+    <i class="fa-solid fa-robot"></i>
+    Bot
+  </a>
+  </li>
+  <li class="mb-4" >
+  <a routerLinkActive="active" routerLink="/billing" class=" ps-3 pe-5 p-2">
+    <i class="fa-solid fa-wallet"></i>
+    Billing
+  </a>
+  </li>
+  <li class="mb-4">
+  <a routerLinkActive="active" routerLink="/videos" class=" ps-3 pe-5 p-2">
+    <i class="fa-regular fa-circle-play"></i>
+    Videos
+  </a>
+  </li>
+  <li class="mb-3">
+  <a routerLinkActive="active" routerLink="/notes" class=" ps-3 pe-5 p-2">
+    <i class="fa-solid fa-note-sticky"></i>
+    Notes
+  </a>
+  </li>
+  <li class=" i-help ">
+  <a routerLinkActive="active" routerLink="/help" class=" ps-3 pe-5 p-2 ">
+    <i class="fa-solid fa-circle-question"></i>
+    Help
+  </a>
+  </li>
+
+
+  </ul>
+  </div>
+
+  </div>
+
+
+
+
+
+
+
+
+

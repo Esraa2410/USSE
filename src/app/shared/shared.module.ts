@@ -4,6 +4,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { UsButtonComponent } from './components/us-button/us-button.component';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { HeaderComponent } from './components/header/header.component';
   declarations: [
     SideBarComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    UsButtonComponent
   ],
   exports:[
     SideBarComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    UsButtonComponent
   ]
 })
 export class SharedModule { }

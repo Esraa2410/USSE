@@ -56,21 +56,19 @@
 // start Theme
 :root{
 
-// background colors
-  --color-0: #f0f0f0 ;
-  --color-1: #fff ;
 // main colors
-  --color-2: rgb(219, 129, 73) ;
-  --color-2-light: rgb(219, 129, 73,0.5) ;
-  --color-3: rgb(138,43,226) ;
-  --color-3-light: rgb(138,43,226,0.5) ;
-  --color-4: var(--bs-gray-600) ;
-  --color-5: var(--bs-gray-500) ;
+  --clr-primary-800: rgb(10, 77, 104) ;
+  --clr-primary-400: linear-gradient(90deg, rgba(8, 131, 149, 0.16) 0%, rgba(8, 131, 149, 0.24) 100%), #FFFFFF;
+  --clr-primary-200: linear-gradient(180deg, rgba(8, 131, 149, 0.04) 0%, rgba(8, 131, 149, 0.24) 100%), #FFFFFF;
+  --clr-neutral-900: rgb(41, 42, 50);
+  --clr-neutral-600: rgb(110, 110, 110);
+  --clr-neutral-500: rgb(134, 134, 134);
+  --clr-neutral-0: #fff;
   // general colors
-  --border-color:var(--bs-gray-500);
-  --ripple-color: black;
-  --button-color-2: linear-gradient(90deg, rgb(138,43,226), rgb(158, 93, 219),rgb(200, 141, 255));
-  --button-color-3: linear-gradient(90deg, rgb(219, 129, 73), rgb(255, 151, 86),rgb(255, 185, 141));
+  // --border-color:var(--bs-gray-500);
+  // --ripple-color: black;
+  // --button-color-2: linear-gradient(90deg, rgb(138,43,226), rgb(158, 93, 219),rgb(200, 141, 255));
+  // --button-color-3: linear-gradient(90deg, rgb(219, 129, 73), rgb(255, 151, 86),rgb(255, 185, 141));
 
   --trans-2: all 0.2s ease;
   --trans-3: all 0.3s ease;
@@ -91,45 +89,45 @@
   --shadow-input: 0 10px 20px -5px rgba(0,0,0,.1803921569);
 }
 
-body.dark {
-// background colors
---color-0: var(--bs-dark);
---color-1: var(--bs-gray-800);
---color-4: var(--bs-gray-400) ;
---color-5: var(--bs-gray-300) ;
-// general colors
---border-color:var(--bs-gray-600);
---ripple-color: #fff;
+// body.dark {
+// // background colors
+// --color-0: var(--bs-dark);
+// --color-1: var(--bs-gray-800);
+// --color-4: var(--bs-gray-400) ;
+// --color-5: var(--bs-gray-300) ;
+// // general colors
+// --border-color:var(--bs-gray-600);
+// --ripple-color: #fff;
 
---shadow-sm: 2px 2px 5px 1px rgb(24 24 24 / 64%) ;
+// --shadow-sm: 2px 2px 5px 1px rgb(24 24 24 / 64%) ;
 
---shadow-input: 0 10px 20px -5px rgb(0 0 0 / 62%);
-}
+// --shadow-input: 0 10px 20px -5px rgb(0 0 0 / 62%);
+// }
 // end Theme
 *{
   color: var(--color-4);
 }
 // global
-.shadow-sm{
-  box-shadow: var(--shadow-sm) !important
-}
-.border-color-2{border-color: var(--color-2);}
-.border-color-3{border-color: var(--color-3);}
-.border-color{border-color: var(--border-color);}
+// .shadow-sm{
+//   box-shadow: var(--shadow-sm) !important
+// }
+// .border-color-2{border-color: var(--color-2);}
+// .border-color-3{border-color: var(--color-3);}
+// .border-color{border-color: var(--border-color);}
 
-.bg-0{ background-color: var(--color-0) !important;}
-.bg-1{ background-color: var(--color-1) !important;}
-.bg-2{ background-color: var(--color-2) !important;}
-.bg-3{ background-color: var(--color-3) !important;}
-.bg-4{ background-color: var(--color-4) !important;}
-.bg-5{ background-color: var(--color-5) !important;}
+.bg-primary-800{ background-color: var(--clr-primary-800) !important;}
+.bg-primary-400{ background: var(--clr-primary-400) !important;}
+.bg-primary-200{ background: var(--clr-primary-200) !important;}
+.bg-neutral-900{ background-color: var(--clr-neutral-900) !important;}
+.bg-neutral-600{ background-color: var(--clr-neutral-600) !important;}
+.bg-neutral-500{ background-color: var(--clr-neutral-500) !important;}
+.bg-neutral-0{ background-color: var(--clr-neutral-0) !important;}
 
-.c-0{ color: var(--color-0) !important;}
-.c-1{ color: var(--color-1) !important;}
-.c-2{ color: var(--color-2) !important;}
-.c-3{ color: var(--color-3) !important;}
-.c-4{ color: var(--color-4) !important;}
-.c-5{ color: var(--color-5) !important;}
+.text-primary-800{ color: var(--clr-primary-800) !important;}
+.text-neutral-900{ color: var(--clr-neutral-900) !important;}
+.text-neutral-600{ color: var(--clr-neutral-600) !important;}
+.text-neutral-500{ color: var(--clr-neutral-500) !important;}
+.text-neutral-0{ color: var(--clr-neutral-0) !important;}
 
 // scroll bar
 /* width */

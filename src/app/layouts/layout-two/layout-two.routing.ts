@@ -11,6 +11,7 @@ const routes: Routes = [
         loadChildren: () =>
           import("./../../pages/messages/messages.module").then((m) => m.MessagesModule),
       }
+
     ]
   }
 ];
