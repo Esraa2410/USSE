@@ -1,15 +1,102 @@
-<app-nav></app-nav>
-<div class="container-fluid p-5 fluid-bg ">
-  <div class="row">
-    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5  mt-4 ps-0 pe-0  ">
-    <app-sidenav></app-sidenav>
-    </div>
+<mat-progress-bar id="progress-bar"  class="d-none" mode="indeterminate"></mat-progress-bar>
 
-    <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 p-3 ">
-      <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 
-    </div>
+<div class="helper-con">
+  <div class="helper shadow-sm item-50 d-flex justify-content-center align-items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+    </svg>
   </div>
-
+  <button mat-fab class="shadow-sm btn helper-item item-45 p-0 d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#theme-modal">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-palette" viewBox="0 0 16 16">
+      <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+      <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z"/>
+    </svg>
+  </button>
+  <button mat-fab (click)="darkModeToggle()" class="helper-item btn p-0 item-40 d-flex justify-content-center align-items-center shadow-sm">
+    <svg *ngIf="!darkActive" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/>
+    </svg>
+    <svg *ngIf="darkActive" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+      <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+    </svg>
+  </button>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="theme-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-color-3-7-imp">
+        <h1 class="modal-title" id="exampleModalLabel">Theme</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="colors-con m-auto row d-flex justify-content-center align-items-center">
+          <div class="col-4 my-2 d-flex justify-content-center align-items-center">
+            <svg (click)="changeColor('rgb(79, 70, 229)','rgb(79, 70, 229,0.5)')" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="color-item color-1 bi bi-circle-half" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+          <div class="col-4 my-1 d-flex justify-content-center align-items-center">
+            <svg (click)="changeColor('rgb(245, 158, 11)','rgb(245, 158, 11,0.5)')" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="color-item color-2 bi bi-circle-half" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+          <div class="col-4 my-2 d-flex justify-content-center align-items-center">
+            <svg (click)="changeColor('rgb(33, 150, 243)','rgb(33, 150, 243,0.5)')" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="color-item color-3 bi bi-circle-half" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+          <div class="col-4 my-2 d-flex justify-content-center align-items-center">
+            <svg (click)="changeColor('rgb(244, 63, 94)','rgb(244, 63, 94,0.5)')" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="color-item color-4 bi bi-circle-half" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+          <div class="col-4 my-2 d-flex justify-content-center align-items-center">
+            <svg (click)="changeColor('rgb(138, 43, 226)','rgb(138, 43, 226,0.5)')" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="color-item color-5 bi bi-circle-half" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+          <div class="col-4 my-2 d-flex justify-content-center align-items-center">
+            <svg (click)="changeColor('rgb(0, 128, 128)','rgb(0, 128, 128,0.5)')" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="color-item color-6 bi bi-circle-half" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+          <div class="col-4 my-2 d-flex justify-content-center align-items-center">
+            <svg (click)="changeColor('rgb(0, 128, 128)','rgb(0, 128, 128,0.5)')" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="color-item color-6 bi bi-circle-half" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-color-3-7-imp">
+        <button  mat-raised-button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span class="primary-color-text">Cancel</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="successMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="text-color my-3 text-center w-100 fs-5">Success!</p>
+        <hr>
+        <button mat-raised-button data-bs-dismiss="modal" class="btn btn-success m-auto d-block"><span class="primary-color-text fs-5">Ok</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="failMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="text-color my-3 text-center w-100 fs-5">Fail!</p>
+        <hr>
+        <button mat-raised-button data-bs-dismiss="modal" class="btn btn-danger m-auto d-block"><span class="primary-color-text fs-5">Ok</span></button>
+      </div>
+    </div>
+  </div>
+</div>

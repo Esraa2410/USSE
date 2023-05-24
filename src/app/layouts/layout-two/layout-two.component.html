@@ -1,0 +1,19 @@
+<div class="default-layout">
+  <div class="shadow-bottom-overlay"></div>
+
+  <app-side-bar class="d-none d-md-block sidebar-comp bg-1 sidebar-comp-sm close"></app-side-bar>
+  <div class="main-container d-flex justify-content-space-between flex-column min-vh-100">
+    <app-header class="navbar-comp d-flex align-items-center rounded-3" (toggleSidebar)="sidebarTogg()"></app-header>
+    <div [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </div>
+  <div class="d-md-none offcanvas offcanvas-start sidebar-sm-size" tabindex="-1" id="sidebar-sm" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-body sub-con-color offcanvas-body-overflow p-0">
+      <app-side-bar class="sidebar-comp sidebar-comp-fixed sidebar-comp-lg close"></app-side-bar>
+    </div>
+  </div>
+
+</div>
+
