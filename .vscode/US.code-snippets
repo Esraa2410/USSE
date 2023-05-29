@@ -1,0 +1,240 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	"flex": {
+		"scope": "html",
+		"prefix": "fle",
+		"body": [
+			"d-flex justify-content-center align-items-center flex-column"
+		],
+		"description": ""
+	},
+	"assets": {
+		"scope": "html",
+		"prefix": "asset",
+		"body": [
+			"assets/"
+		],
+		"description": ""
+	},
+	"txt": {
+		"scope": "html",
+		"prefix": "txt-24",
+		"body": [
+			"txt-lg"
+		],
+		"description": ""
+	},
+	"txt2": {
+		"scope": "html",
+		"prefix": "txt-18",
+		"body": [
+			"txt-md"
+		],
+		"description": ""
+	},
+	"txt3": {
+		"scope": "html",
+		"prefix": "txt-16",
+		"body": [
+			"txt-sm"
+		],
+		"description": ""
+	},
+	"txt4": {
+		"scope": "html",
+		"prefix": "txt-12",
+		"body": [
+			"txt-xs"
+		],
+		"description": ""
+	},
+
+	"txt-p": {
+		"scope": "html",
+		"prefix": "p-txt-24",
+		"body": [
+			"<p class=\"txt-lg\">${1}</p>"
+		],
+		"description": ""
+	},
+	"txt2p": {
+		"scope": "html",
+		"prefix": "p-txt-18",
+		"body": [
+			"<p class=\"txt-md\">${1}</p>"
+		],
+		"description": ""
+	},
+	"txt3p": {
+		"scope": "html",
+		"prefix": "p-txt-16",
+		"body": [
+			"<p class=\"txt-sm\">${1}</p>"
+		],
+		"description": ""
+	},
+	"txt4p": {
+		"scope": "html",
+		"prefix": "p-txt-12",
+		"body": [
+			"<p class=\"txt-xs\">${1}</p>"
+		],
+		"description": ""
+	},
+
+	"txt-h3": {
+		"scope": "html",
+		"prefix": "h3-txt-24",
+		"body": [
+			"<h3 class=\"txt-lg\">${1}</h3>"
+		],
+		"description": ""
+	},
+	"txt2h3": {
+		"scope": "html",
+		"prefix": "h3-txt-18",
+		"body": [
+			"<h3 class=\"txt-md\">${1}</h3>"
+		],
+		"description": ""
+	},
+	"txt3h3": {
+		"scope": "html",
+		"prefix": "h3-txt-16",
+		"body": [
+			"<h3 class=\"txt-sm\">${1}</h3>"
+		],
+		"description": ""
+	},
+	"txt4h3": {
+		"scope": "html",
+		"prefix": "h3-txt-12",
+		"body": [
+			"<h3 class=\"txt-subtitle\">${1}</h3>"
+		],
+		"description": ""
+	},
+
+	// start design system
+	// "": {
+	// 	"scope": "html",
+	// 	"prefix": "h3-txt-14",
+	// 	"body": [
+	// 		"<h3 class=\"txt-caption\">${1}</h3>"
+	// 	],
+	// 	"description": ""
+	// },
+	// end design system
+
+	"translate": {
+		"scope": "html",
+		"prefix": "tra",
+		"body": [
+			"{{\"HOME.${1}\" | translate}}"
+		],
+		"description": ""
+	},
+  "clr": {
+		"scope": "html",
+		"prefix": "bg-primary-800",
+		"body": [
+			"bg-primary-800"
+		],
+		"description": ""
+	},
+  "clr2": {
+		"scope": "html",
+		"prefix": "bg-primary-400",
+		"body": [
+			"bg-primary-400"
+		],
+		"description": ""
+	},
+  "clr3": {
+		"scope": "html",
+		"prefix": "bg-primary-200",
+		"body": [
+			"bg-primary-200"
+		],
+		"description": ""
+	},
+  "clr4": {
+		"scope": "html",
+		"prefix": "bg-neutral-900",
+		"body": [
+			"bg-neutral-900"
+		],
+		"description": ""
+	},
+  "clr5": {
+		"scope": "html",
+		"prefix": "bg-neutral-600",
+		"body": [
+			"bg-neutral-600"
+		],
+		"description": ""
+	},
+  "clr6": {
+		"scope": "html",
+		"prefix": "bg-neutral-500",
+		"body": [
+			"bg-neutral-500"
+		],
+		"description": ""
+	},
+  "clr7": {
+		"scope": "html",
+		"prefix": "bg-neutral-0",
+		"body": [
+			"bg-neutral-0"
+		],
+		"description": ""
+	},
+  "clr_1": {
+		"scope": "html",
+		"prefix": "text-primary-800",
+		"body": [
+			"text-primary-800"
+		],
+		"description": ""
+	},
+  "clr_2": {
+		"scope": "html",
+		"prefix": "text-neutral-900",
+		"body": [
+			"text-neutral-900"
+		],
+		"description": ""
+	},
+  "clr_3": {
+		"scope": "html",
+		"prefix": "text-neutral-600",
+		"body": [
+			"text-neutral-600"
+		],
+		"description": ""
+	},
+  "clr_4": {
+		"scope": "html",
+		"prefix": "text-neutral-500",
+		"body": [
+			"text-neutral-500"
+		],
+		"description": ""
+	},
+  "clr_5": {
+		"scope": "html",
+		"prefix": "text-neutral-0",
+		"body": [
+			"text-neutral-0"
+		],
+		"description": ""
+	},
+
+}
