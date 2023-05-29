@@ -1,0 +1,24 @@
+div {
+  color: #292A32;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  width: 220px;
+  height: 33px;
+  padding: 27px;
+  position: fixed;
+ bottom: 30px;
+ left: 260px;
+
+  &.error {
+    background: #FFEAEC;
+  }
+
+  &.warning {
+    background: #FFF4D9;
+  }
+
+  &.success {
+    background:#DEFFF3;
+  }
+
+}

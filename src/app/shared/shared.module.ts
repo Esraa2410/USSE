@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsButtonComponent } from './components/us-button/us-button.component';
+import { SrButtonComponent } from './components/sr-button/sr-button.component';
+import { UsToasterComponent } from './components/us-toaster/us-toaster.component';
 
 @NgModule({
   imports: [
@@ -15,13 +17,17 @@ import { UsButtonComponent } from './components/us-button/us-button.component';
     SideBarComponent,
     FooterComponent,
     HeaderComponent,
-    UsButtonComponent
+    UsButtonComponent ,
+    SrButtonComponent ,
+    UsToasterComponent
   ],
   exports:[
     SideBarComponent,
     FooterComponent,
     HeaderComponent,
-    UsButtonComponent
+    UsButtonComponent ,
+    SrButtonComponent ,
+    UsToasterComponent
   ]
 })
 export class SharedModule { }

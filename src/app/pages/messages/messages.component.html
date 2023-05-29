@@ -1,8 +1,24 @@
-<!-- Test Your code here  -->
-<us-button
-  [size]="'md'"
-  [txt]="'md'"
-  [icon]="'md'"
->
+<!-- Test sr-button  -->
+<sr-button
 
-</us-button>
+ [label]="'test'"
+ [icon]="false"
+ [size]="'md'"
+ [loading]="false"
+
+ (clicked)="onClick($event)  "
+
+ >
+</sr-button>
+<h2>{{eventInfo}}</h2>
+
+
+
+
+<!-- Test us-toaster  -->
+
+    <us-toaster  [title]="'Warning'" [state]="'success'" [duration]="5000" ></us-toaster>
+
+
+
+

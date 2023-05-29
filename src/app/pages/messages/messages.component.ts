@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
+  eventInfo:any;
+
+  onClick(event:any){
+    console.log(event);
+  }
 
   constructor() { }
 

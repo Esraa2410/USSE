@@ -291,6 +291,32 @@ mat-progress-bar mat-progress-bar-buffer {
 button[disabled]{
   cursor: no-drop !important;
 }
+
+.txt-lg{
+  font-size: 24px;
+  @media only screen and (max-width: 600px) {
+    font-size: 21px;
+  }
+}
+.txt-md{
+  font-size: 18px;
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+}
+.txt-sm{
+  font-size: 16px;
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+}
+.txt-xs{
+  font-size: 12px;
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+}
+
 /*handle form floating*/
 // .input-group-icon {
 //   display: flex;
