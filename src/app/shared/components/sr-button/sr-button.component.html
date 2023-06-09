@@ -1,11 +1,12 @@
 <button
   [disabled]="disabled"
+  mat-raised-button
   class="bg-primary-800 text-white btn rounded-3 "
   (click)="setClick($event)"
   [ngClass]="{
     'button-size-sm txt-md': size == 'sm',
     'button-size-md txt-md': size == 'md',
-    'button-size-lg txt-md': size == 'lg' 
+    'button-size-lg txt-md': size == 'lg'
   }"
 >
   <span class="label">{{ label }}</span>

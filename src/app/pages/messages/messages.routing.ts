@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { MessagesComponent } from './messages.component';
+import { MessagesComponent } from './Component/messages.component';
 
 const routes: Routes = [
   {

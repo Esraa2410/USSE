@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  domain:"https://commswift.formmozo.com/api/"
+  domain:"https://commswift.formmozo.com/api/",
+  api:""
+
 };

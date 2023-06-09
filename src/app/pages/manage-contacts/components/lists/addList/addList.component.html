@@ -1,0 +1,31 @@
+<section class="d-flex flex-column p-3 gap-3 h-100">
+  <div class="modal-header  align-items-center">
+    <h2>Add List</h2>
+    <mat-icon  (click)="onClose()" class="pointer">close </mat-icon>
+  </div>
+  <div class="modal-body">
+    <form  [formGroup]="form">
+          <!-- start-input -->
+          <div class="col-12 my-2 col-12 ">
+            <div class="form-floating mb-1">
+              <input [ngClass]="{'border-danger': name.invalid && name.touched,'c-2 fs-5': name.valid && name.touched}" formControlName="name" type="text" class="form-control" placeholder="-">
+              <label class="rounded-3" >List Name</label>
+            </div>
+            <span  *ngIf="name.invalid && name.touched" class="animate__animated anime-duration-800 animate__fadeInUp text-danger d-flex gap-1 rounded-2 bg-danger bg-opacity-10 p-2">
+              <mat-icon class="text-danger" style="height: 20px;width: 20px; font-size: 20px;">error</mat-icon>
+              <span class="text-danger text-wrap d-flex flex-column">
+                <span class="text-danger" *ngIf="name.errors.required">This filed is required</span>
+              </span>
+            </span>
+          </div>
+          <!-- end-input -->
+    </form>
+  </div>
+  <div class="modal-footer justify-content-center gap-3">
+    <button class="btn btn-danger" (click)="onClose()">Close</button>
+    <button class="btn btn-primary" (click)="submit()">Submit</button>
+  </div>
+</section>
+
+
+

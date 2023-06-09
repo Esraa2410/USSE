@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-messages',
@@ -6,15 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
-  eventInfo:any;
-
-  onClick(event:any){
-    console.log(event);
-  }
-
+  form:any;
+  email:any = new FormControl('',[Validators.required]);
+  data:any
   constructor() { }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      email:this.email
+    })
   }
 
 }
