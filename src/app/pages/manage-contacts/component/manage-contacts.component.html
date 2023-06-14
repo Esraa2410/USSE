@@ -1,8 +1,36 @@
-<button mat-raised-button class="btn btn-primary" (click)="openModal()">Add list</button>
+<div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-center ">
+    <mat-icon class="tab-icon">recent_actors</mat-icon>
+ <span > Manage Contacts</span>
+  </div>
+  <div class="buttons_ ">
+    <button mat-raised-button class="btn btn-primary bg-primary-800 text-neutral-0 m-2" (click)="openModal()"> <mat-icon class="text-neutral-0">add</mat-icon> Add list</button>
+  <button mat-raised-button class="btn btn-primary bg-primary-800 text-neutral-0 m-2" (click)="openModal()"> <mat-icon>description</mat-icon> Export All</button>
+  </div>
+
+</div>
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-  <mat-tab label="Contacts"></mat-tab>
-  <mat-tab label="Lists">
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">contacts</mat-icon>
+      Contacts
+    </ng-template>
+    <app-contacts></app-contacts>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">format_list_bulleted</mat-icon>
+      Lists
+    </ng-template>
     <app-lists></app-lists>
   </mat-tab>
-  <mat-tab label="Unsubscribed"></mat-tab>
-</mat-tab-group>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">unsubscribe</mat-icon>
+      Unsubscribed
+    </ng-template>
+  </mat-tab>
+

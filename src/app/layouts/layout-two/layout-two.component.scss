@@ -1,5 +1,10 @@
 app-side-bar{
-  width: 300px;
+  width: 450px;
+}
+@media (max-width:991px){
+  app-side-bar{
+    width: 380px !important;
+  }
 }
 .navbar-comp {
   position: fixed;

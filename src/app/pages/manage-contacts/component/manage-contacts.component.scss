@@ -1,79 +1,9 @@
-
-.rigth-btns button{
-  background-color:  #0A4D68;
-  color: #fff;
+.tab-icon {
+  margin-right: 8px;
+}
+span{
+  font-weight: 500;
+font-size: 24px;
+font-family: 'Poppins';
 }
 
-// .div-table{
-//   border-radius: 24px 24px 0px 0px;
-//   background: linear-gradient(90deg, rgba(8, 131, 149, 0.16) 0%, rgba(8, 131, 149, 0.24) 100%), #FFFFFF;
-
-// }
-
-tbody , p{
-  color:#6E6E6E;
-}
-
-.CLU a:hover {
-  border-radius: 7px;
-  background: linear-gradient(90deg, rgba(8, 131, 149, 0.16) 0%, rgba(8, 131, 149, 0.24) 100%),
-  linear-gradient(0deg, #FFFFFF, #FFFFFF);
-
-}
-
-.lists-table{
-  color:#292A32;
-
-}
-
-.table-head{
-  background: linear-gradient(90deg, rgba(8, 131, 149, 0.16) 0%, rgba(8, 131, 149, 0.24) 100%), #FFFFFF;
-  border-top-left-radius: 15px ;
-  border-top-right-radius: 15px;
-
-}
-.checkbox-index{
-  border-top-left-radius: 15px ;
-}
-.option-index{
-  border-top-right-radius: 15px;
-
-}
-
-.tr-lists{
-  font-size: 1rem;
-}
-
-
-
-.div-table{
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-
-
-}
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination {
-  display: inline-block;
-  margin-top: 0;
-
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.pagination a:hover{
-  border-radius: 7px;
-  background: linear-gradient(90deg, rgba(8, 131, 149, 0.16) 0%, rgba(8, 131, 149, 0.24) 100%),
-}
