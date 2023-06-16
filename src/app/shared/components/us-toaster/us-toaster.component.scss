@@ -2,12 +2,12 @@ div {
   color: #292A32;
   font-size: 1.1rem;
   border-radius: 8px;
-  width: 220px;
+  width: 300px;
   height: 33px;
-  padding: 27px;
+  padding: 30px;
   position: fixed;
- bottom: 30px;
- left: 260px;
+  bottom: 30px;
+  left: 260px;
 
   &.error {
     background: #FFEAEC;
@@ -21,4 +21,14 @@ div {
     background:#DEFFF3;
   }
 
+}
+.notification-container{
+  position: relative;
+}
+#progress-bar {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 }

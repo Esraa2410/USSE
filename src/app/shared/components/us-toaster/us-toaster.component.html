@@ -1,15 +1,22 @@
-<div 
-  class="d-flex align-items-center"
- [ngClass]="{'error' : state == 'error' , 'warning' : state == 'warning' , 'success' : state == 'success' }"
+<div
+  class="d-flex align-items-center "
+  [ngClass]="{
+    'error': state == 'error',
+    'warning': state == 'warning',
+    'success': state == 'success'
+  }"
 >
   <span class="me-3" *ngIf="state == 'error'">
-    <i class="fa-solid fa-circle-xmark fa-lg" style="color: #ef4d61"></i>
+    <img src="assets/icons/error.svg" alt="" />
   </span>
   <span class="me-3" *ngIf="state == 'warning'">
-    <i class="fa-solid fa-circle-exclamation fa-lg" style="color: #ffc53c"></i>
+        <img src="assets/icons/warning.svg" alt="" />
+
   </span>
   <span class="me-3" *ngIf="state == 'success'">
-    <i class="fa-solid fa-circle-check fa-lg" style="color: #35d39d"></i>
+    <img src="assets/icons/succsess.svg" alt="" />
+
   </span>
   {{ title }}
+
 </div>

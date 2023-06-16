@@ -7,11 +7,11 @@ import { Component, Input, OnInit , Output , EventEmitter  } from '@angular/core
 })
 export class UsButtonComponent implements OnInit {
 
-  @Input('label') label:string = '';
-  @Input() icon:boolean= true;
+  @Input() label:string = '';
   @Input() size:string = '';
   @Input() loading:boolean = true;
   @Input() disabled:boolean = false;
+  @Input() fill:boolean =true
 
   @Output() clicked = new EventEmitter<any>();
   setClick(clickInfo:Event) {

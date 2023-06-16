@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddListComponent } from '../components/lists/addList/addList.component';
 
 @Component({
@@ -11,13 +11,16 @@ export class ManageContactsComponent {
   constructor(public dialog: MatDialog){
 
   }
+
   openModal(){
-    const dialogRef = this.dialog.open(AddListComponent,
-        {
-          width: '70vw',
-          height: '70vh',
-        }
-      );
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.height='fit-content';
+    dialogConfig.width='35vw';
+    dialogConfig.maxWidth='100%';
+    dialogConfig.minWidth='300px';
+    dialogConfig.maxHeight='85vh';
+    dialogConfig.minHeight='650px'
+    const dialogRef = this.dialog.open(AddListComponent,dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

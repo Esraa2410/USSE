@@ -18,7 +18,6 @@ a {
   min-height: 50vh;
   max-height: 100vh;
   overflow: hidden;
-  overflow-y: auto !important;
   .user-info-container {
     padding-inline: 15px;
   }
@@ -28,6 +27,8 @@ a {
   }
   .all-options-container {
     height: 100%;
+    overflow-y: auto !important;
+
     ul {
       gap: 5px;
       li {
@@ -81,6 +82,12 @@ a {
   .icon {
     width: 20px;
     height: 20px;
+
+    &:hover{
+      img{
+        filter : invert(20%) sepia(77%) saturate(814%) hue-rotate(159deg) brightness(39%) contrast(93%);
+      }
+    }
   }
 }
 
@@ -103,3 +110,6 @@ height: 45px !important;
 }
 }
 
+
+// invert(20%) sepia(77%) saturate(814%) hue-rotate(159deg) brightness(39%) contrast(93%);
+// filter : invert(20%) sepia(77%) saturate(814%) hue-rotate(159deg) brightness(39%) contrast(93%);

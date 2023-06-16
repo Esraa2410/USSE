@@ -1,4 +1,5 @@
 import { Component, Input, OnInit   } from '@angular/core';
+
 @Component({
   selector: 'us-toaster',
   templateUrl: './us-toaster.component.html',
@@ -9,7 +10,8 @@ export class UsToasterComponent implements OnInit {
 @Input() title:string = '';
 @Input() state: 'error' | 'warning' | 'success' | '' = 'success';
 @Input() icon:string = '';
-@Input() duration: number = 30000 ;
+@Input() duration: number = 10000 ;
+progress = 100;
 
   constructor() { }
 

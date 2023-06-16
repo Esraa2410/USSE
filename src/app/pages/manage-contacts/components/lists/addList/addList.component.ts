@@ -10,10 +10,8 @@ import { ManageContactsService } from '../../../manage-contacts.service';
 })
 export class AddListComponent implements OnInit {
   name:any = new FormControl('',[Validators.required]);
-  email:any = new FormControl('khamis.safy@gmail.com',[Validators.required]);
   form = new FormGroup({
-    name:this.name,
-    email: this.email
+    name:this.name
   });
   constructor(
     private listService:ManageContactsService,
@@ -24,11 +22,12 @@ export class AddListComponent implements OnInit {
   ngOnInit() {
   }
   submit(){
-    this.listService.addList(this.form.value).subscribe(
-      (res)=>{
-        console.log(res)
-      }
-    )
+    console.log("done")
+    // this.listService.addList(this.form.value).subscribe(
+    //   (res)=>{
+    //     console.log(res)
+    //   }
+    // )
   }
   onClose(): void {
     this.dialogRef.close();

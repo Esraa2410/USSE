@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
 import { UsButtonComponent } from './components/sr-button/sr-button.component';
 import { NavComponent } from './components/nav/nav.component';
+import { UsToasterComponent } from './components/us-toaster/us-toaster.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -21,6 +22,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -37,7 +40,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   declarations: [
     SideBarComponent,
@@ -45,7 +50,8 @@ import {MatMenuModule} from '@angular/material/menu';
     HeaderComponent,
     UsButtonComponent,
     TextInputComponent,
-    NavComponent
+    NavComponent,
+    UsToasterComponent
   ],
   exports:[
     SideBarComponent,
@@ -53,6 +59,7 @@ import {MatMenuModule} from '@angular/material/menu';
     HeaderComponent,
     UsButtonComponent,
     TextInputComponent,
+    UsToasterComponent,
     NavComponent,
     MatTabsModule,
     MatDialogModule,
@@ -63,7 +70,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule,
+    MatSnackBarModule
 
   ]
 })
