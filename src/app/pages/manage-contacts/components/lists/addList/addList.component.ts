@@ -23,11 +23,14 @@ export class AddListComponent implements OnInit {
   }
   submit(){
     console.log("done")
-    // this.listService.addList(this.form.value).subscribe(
-    //   (res)=>{
-    //     console.log(res)
-    //   }
-    // )
+    this.listService.addList(this.form.value).subscribe(
+      (res)=>{
+        console.log(res)
+      },
+      (err)=>{
+        console.log(err)
+      }
+    )
   }
   onClose(): void {
     this.dialogRef.close();

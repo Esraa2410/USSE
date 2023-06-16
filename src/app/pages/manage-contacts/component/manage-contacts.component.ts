@@ -14,12 +14,11 @@ export class ManageContactsComponent {
 
   openModal(){
     const dialogConfig=new MatDialogConfig();
-    dialogConfig.height='fit-content';
+    dialogConfig.height='85vh';
     dialogConfig.width='35vw';
     dialogConfig.maxWidth='100%';
     dialogConfig.minWidth='300px';
     dialogConfig.maxHeight='85vh';
-    dialogConfig.minHeight='650px'
     const dialogRef = this.dialog.open(AddListComponent,dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {

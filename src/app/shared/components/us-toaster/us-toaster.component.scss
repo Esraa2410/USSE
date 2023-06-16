@@ -1,10 +1,8 @@
-div {
+.us-toaster {
   color: #292A32;
   font-size: 1.1rem;
   border-radius: 8px;
   width: 300px;
-  height: 33px;
-  padding: 30px;
   position: fixed;
   bottom: 30px;
   left: 260px;
@@ -21,6 +19,7 @@ div {
     background:#DEFFF3;
   }
 
+
 }
 .notification-container{
   position: relative;
@@ -31,4 +30,37 @@ div {
   bottom: 0px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+}
+.toaster-progress-bar{
+  width: 0%;
+  height: 4px;
+  animation-name: loading;
+  animation-timing-function: linear;
+  -webkit-animation: loading 0.3s 0s linear;
+  animation-delay: 0s;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.progress-error {
+  background: #ff3347;
+}
+
+.progress-warning {
+  background: #ffc42e;
+}
+
+.progress-success {
+  background:#35d39d;
 }
