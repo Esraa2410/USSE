@@ -59,11 +59,14 @@
 
 // main colors
   --clr-primary-800: rgb(10, 77, 104) ;
+  --clr-primary-700: #00658D;
+  --clr-primary-500: #bfdeea ;
   --clr-primary-400: linear-gradient(90deg, rgba(8, 131, 149, 0.16) 0%, rgba(8, 131, 149, 0.24) 100%), #FFFFFF;
   --clr-primary-200: linear-gradient(180deg, rgba(8, 131, 149, 0.04) 0%, rgba(8, 131, 149, 0.24) 100%), #FFFFFF;
   --clr-neutral-900: rgb(41, 42, 50);
   --clr-neutral-600: rgb(110, 110, 110);
   --clr-neutral-500: rgb(134, 134, 134);
+  --clr-neutral-200: rgb(243, 243, 243);
   --clr-neutral-0: #fff;
   // general colors
   // --border-color:var(--bs-gray-500);
@@ -133,16 +136,16 @@
 // scroll bar
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--color-3-light);
+  background: var(--clr-neutral-200);
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-3);
+  background: var(--clr-primary-500);
   border-radius:30px;
   -webkit-border-radius:30px;
   -moz-border-radius:30px;
@@ -150,9 +153,8 @@
   -o-border-radius:30px;
 }
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-3);
-}
+// ::-webkit-scrollbar-thumb:hover {
+// }
 
 // main classes
 body {
@@ -312,7 +314,7 @@ button[disabled]{
   }
 }
 .txt-xs{
-  font-size: 12px;
+  font-size: 14px;
   @media only screen and (max-width: 600px) {
     font-size: 12px;
   }
@@ -586,4 +588,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .no-decoration{
   text-decoration: none ;
+}
+.w-fit{
+  width: fit-content !important;
 }

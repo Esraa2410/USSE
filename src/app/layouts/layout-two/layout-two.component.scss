@@ -1,11 +1,13 @@
 app-side-bar{
-  width: 450px;
+  height: 91vh !important;
 }
-@media (max-width:991px){
-  app-side-bar{
-    width: 380px !important;
-  }
-}
+//   width: 450px;
+// }
+// @media (max-width:991px){
+//   app-side-bar{
+//     width: 380px !important;
+//   }
+// }
 .navbar-comp {
   position: fixed;
   top: 0;
@@ -43,4 +45,7 @@ app-side-bar{
 .resizable {
   width: calc(100% - 250px);
   left: 250px;
+}
+.vh-91{
+  height: 91vh;
 }
