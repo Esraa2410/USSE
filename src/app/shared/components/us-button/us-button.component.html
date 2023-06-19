@@ -1,4 +1,4 @@
- <button
+  <button
   [disabled]="disabled"
   UsButton
   [isDark]="!fill"
@@ -16,7 +16,7 @@
 >
 
 <div class="content d-flex flex-wrap align-items-center justify-content-center">
-  <mat-icon class="icon mx-1">{{matIcon}}</mat-icon>
+  <mat-icon *ngIf="matIcon" class="icon mx-1">{{matIcon}}</mat-icon>
   <span class="label mx-1">{{ label }}</span>
 </div>
 

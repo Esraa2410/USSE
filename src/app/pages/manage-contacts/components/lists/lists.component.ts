@@ -4,36 +4,28 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddListComponent } from './addList/addList.component';
 
-export interface PeriodicElement {
-  position: number;
-  name: string;
-  create_at: string;
-  total: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA:any = [
 
-  {position:1  ,name: 'Hydrogen', create_at: '24 May 2023', total: "20,000"},
-  {position:2  ,name: 'Helium',   create_at: '24 May 2023', total: "20,000"},
-  {position:3  ,name: 'Lithium',  create_at: '24 May 2023', total: "20,000"},
-  {position:4  ,name: 'Beryllium',create_at: '24 May 2023', total: "20,000"},
-  {position:5  ,name: 'Boron',    create_at: '24 May 2023', total: "20,000"},
-  {position:6  ,name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {position:7  ,name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {position:8  ,name: 'Lithium',  create_at: '24 May 2023', total: "20,000"},
-  {position:9  ,name: 'Beryllium',create_at: '24 May 2023', total: "20,000"},
-  {position:10  ,name: 'Boron',    create_at: '24 May 2023', total: "20,000"},
-  {position:11  ,name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {position:12  ,name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {position:13  ,name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {position:14  ,name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {position:15  ,name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {position:16  ,name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {position:17  ,name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {position:18  ,name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {position:19  ,name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {position:20  ,name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
+  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
+  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
 ];
 
 @Component({
@@ -48,20 +40,23 @@ export class ListsComponent implements OnInit ,AfterViewInit  {
   toppings = new FormControl('');
   @ViewChild(MatSort) sort: MatSort;
   toppingList: string[] = ['Name', 'Create At	', 'Total Contacts'];
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit() {
+    this.getData()
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort
   }
 
-  displayedColumns: string[] = ['select', 'position', 'name', 'create_at', 'total',"edit"];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
-
+  displayedColumns: string[] = ['select', 'name', 'create_at', 'total',"edit"];
+  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
+  selection = new SelectionModel<any>(true, []);
+getData(){
+  console.log('Data returned successfully')
+}
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -80,7 +75,7 @@ export class ListsComponent implements OnInit ,AfterViewInit  {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
@@ -90,8 +85,34 @@ export class ListsComponent implements OnInit ,AfterViewInit  {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  edit(element:PeriodicElement){
+  edit(element){
     console.log(element)
   }
+  onSortChange(event){
+    console.log(event)
+    this.dataSource.data
+  }
   onRowClick(row:any){}
+
+  openEditModal(data){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.height='85vh';
+    dialogConfig.width='35vw';
+    dialogConfig.maxWidth='100%';
+    dialogConfig.minWidth='300px';
+    dialogConfig.maxHeight='85vh';
+    dialogConfig.data= data;
+    const dialogRef = this.dialog.open(AddListComponent,dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.getData()
+      }
+    });
+
+  }
+  onPageChange(e){
+    console.log(e)
+    this.getData()
+  }
 }

@@ -13,7 +13,7 @@ export class ManageContactsComponent {
 
   }
   test(){
-    this.toaster.success('hello')
+    this.toaster.warning('hello')
   }
   openModal(){
     const dialogConfig=new MatDialogConfig();

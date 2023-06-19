@@ -1,7 +1,8 @@
 <section class="d-flex flex-column p-4 gap-3 h-100">
   <!-- modal header -->
   <div class="d-flex justify-content-center align-items-center position-relative mb-4 " style="height: 10%;">
-    <div class="txt-lg">Add List</div>
+    <div *ngIf="!isEdit" class="txt-lg">Add List</div>
+    <div *ngIf="isEdit" class="txt-lg">Edit List</div>
     <div class="position-absolute end-0 top-50 translate-middle-y mx-2">
       <img
         src="assets/icons/close-circle.svg"
@@ -60,15 +61,17 @@
     <us-button
       label="Add"
       size="sm"
+      [loading]="isLoading"
       [fill]="true"
-      (click)="submit()"
-      [disabled]="form.invalid?true:false"
+      (clicked)="submitAdd()"
+      [disabled]="form.invalid || isLoading"
     ></us-button>
     <us-button
       label="Cancel"
       size="sm"
       [fill]="false"
-      (click)="onClose()"
+      (clicked)="onClose()"
+      [loading]="false"
     ></us-button>
   </div>
 </section>

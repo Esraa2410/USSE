@@ -14,6 +14,10 @@ export interface PeriodicElement {
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
+  isLoading = false;
+  submit(){
+   this.isLoading = true;
 
+  }
 }
 
