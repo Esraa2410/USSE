@@ -2,21 +2,22 @@ import { Component, Input, OnInit , Output , EventEmitter  } from '@angular/core
 
 @Component({
   selector: 'us-button',
-  templateUrl: './sr-button.component.html',
-  styleUrls: ['./sr-button.component.scss']
+  templateUrl: './us-button.component.html',
+  styleUrls: ['./us-button.component.scss']
 })
 export class UsButtonComponent implements OnInit {
 
-  @Input() label:string = '';
-  @Input() size:string = '';
+  @Input() label:string = 'label';
+  @Input() size:string = 'sm';
+  @Input() matIcon:string = '';
   @Input() loading:boolean = true;
   @Input() disabled:boolean = false;
   @Input() fill:boolean =true
+  @Input() appearance:string ='primary'
 
   @Output() clicked = new EventEmitter<any>();
   setClick(clickInfo:Event) {
-    console.log(clickInfo);
-   this.clicked.emit(clickInfo);
+    this.clicked.emit(clickInfo);
   }
 
 

@@ -3,6 +3,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
+import { MatSort } from '@angular/material/sort';
 
 export interface PeriodicElement {
   position: number;
@@ -43,17 +44,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export class ListsComponent implements OnInit ,AfterViewInit  {
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  @ViewChild(MatPaginator)  paginator!: MatPaginator;
   toppings = new FormControl('');
+  @ViewChild(MatSort) sort: MatSort;
   toppingList: string[] = ['Name', 'Create At	', 'Total Contacts'];
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort
   }
+
   displayedColumns: string[] = ['select', 'position', 'name', 'create_at', 'total',"edit"];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);

@@ -18,10 +18,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     ManageContactsRoutes,
-    MatTabsModule,
-    MatIconModule,
-    MatDialogModule,
-    MatFormFieldModule,
+
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule

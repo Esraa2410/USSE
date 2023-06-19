@@ -1,10 +1,11 @@
 import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[EsButton]'
+  selector: '[UsButton]'
 })
-export class EsButtonDirective {
+export class UsButtonDirective {
   @Input() isLoading:any =false;
+  @Input() isDark:any =false;
 
   @HostListener('click' , ["$event"]) onclick(e:any){
     this.createRipple(e)
@@ -22,6 +23,7 @@ export class EsButtonDirective {
     //Add 'implements OnInit' to the class.
     this.renderer.addClass(this.myElement.nativeElement,"btn")
     this.renderer.addClass(this.myElement.nativeElement,"es-button")
+    this.renderer.addClass(this.myElement.nativeElement,"dark")
   }
   createRipple(event:any) {
     const button = event.currentTarget;

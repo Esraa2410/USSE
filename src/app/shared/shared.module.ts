@@ -7,9 +7,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
-import { UsButtonComponent } from './components/sr-button/sr-button.component';
 import { NavComponent } from './components/nav/nav.component';
-import { UsToasterComponent } from './components/us-toaster/us-toaster.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -24,6 +22,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
+import { UsButtonComponent } from './components/us-button/us-button.component';
+import { UsButtonDirective } from '../directives/us-button.directive';
+import { ToasterServices } from './components/us-toaster/us-toaster.component';
 
 @NgModule({
   imports: [
@@ -42,7 +44,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatMenuModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSortModule
   ],
   declarations: [
     SideBarComponent,
@@ -51,7 +54,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     UsButtonComponent,
     TextInputComponent,
     NavComponent,
-    UsToasterComponent
+    ToasterServices,
+    UsButtonDirective
   ],
   exports:[
     SideBarComponent,
@@ -59,7 +63,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HeaderComponent,
     UsButtonComponent,
     TextInputComponent,
-    UsToasterComponent,
+    ToasterServices,
     NavComponent,
     MatTabsModule,
     MatDialogModule,
@@ -72,8 +76,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatMenuModule,
     MatProgressBarModule,
-    MatSnackBarModule
-
-  ]
+    MatSnackBarModule,
+    MatSortModule,
+    MatIconModule,
+    UsButtonDirective
+  ],
+  providers:[ToasterServices]
 })
 export class SharedModule { }

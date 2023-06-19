@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { SignupComponent } from './component/signup.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRippleModule} from '@angular/material/core';
-import { EsButtonDirective } from 'src/app/directives/es-button.directive';
 
 @NgModule({
   imports: [
@@ -19,7 +19,8 @@ import { EsButtonDirective } from 'src/app/directives/es-button.directive';
     MatButtonModule,
     MatRippleModule,
     FormsModule,
+    SharedModule
   ],
-  declarations: [SignupComponent,EsButtonDirective]
+  declarations: [SignupComponent]
 })
 export class SignupModule { }

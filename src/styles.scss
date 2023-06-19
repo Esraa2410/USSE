@@ -58,6 +58,9 @@
 :root{
 
 // main colors
+  --clr-danger-700: #EC3751;
+  --clr-warning-700: #ffc42e;
+  --clr-success-700: #35d39d;
   --clr-primary-800: rgb(10, 77, 104) ;
   --clr-primary-700: #00658D;
   --clr-primary-500: #bfdeea ;
@@ -120,8 +123,10 @@
 // .border-color{border-color: var(--border-color);}
 
 .bg-primary-800{ background-color: var(--clr-primary-800) !important;}
+.bg-primary-700{ background-color: var(--clr-primary-700) !important;}
 .bg-primary-400{ background: var(--clr-primary-400) !important;}
 .bg-primary-200{ background: var(--clr-primary-200) !important;}
+.bg-danger-700{ background: var(--clr-danger-700) !important;}
 .bg-neutral-900{ background-color: var(--clr-neutral-900) !important;}
 .bg-neutral-600{ background-color: var(--clr-neutral-600) !important;}
 .bg-neutral-500{ background-color: var(--clr-neutral-500) !important;}
@@ -465,10 +470,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   overflow: hidden;
   transition: background 400ms;
   color: #fff;
-  background-color: #6200ee;
-  padding: 1rem 2rem;
+  background-color: var(--clr-primary-800);
   font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
   outline: 0;
   border: 0;
   border-radius: 0.25rem;
@@ -480,6 +483,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     transform: scale(0);
     animation: ripple 600ms linear;
     background-color: rgba(255, 255, 255, 0.25);
+  }
+  &.dark{
+    span.ripple{
+    background-color: rgba(0, 0, 0, 0.10);
+    }
   }
 }
 @keyframes ripple {
@@ -499,9 +507,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   &::before{
     content: "";
     margin: 0 0.5rem;
-    font-size: 12px;
-    --bs-spinner-width: 1.5rem;
-    --bs-spinner-height: 1.5rem;
+    font-size: 9px;
+    --bs-spinner-width: 1.2rem;
+    --bs-spinner-height: 1.2rem;
     --bs-spinner-vertical-align: -0.125em;
     --bs-spinner-border-width: 0.25em;
     --bs-spinner-animation-speed: 0.75s;

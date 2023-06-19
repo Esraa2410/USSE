@@ -1,3 +1,4 @@
+import { ToasterServices } from './../../../shared/components/us-toaster/us-toaster.component';
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddListComponent } from '../components/lists/addList/addList.component';
@@ -8,10 +9,12 @@ import { AddListComponent } from '../components/lists/addList/addList.component'
   styleUrls: ['./manage-contacts.component.scss']
 })
 export class ManageContactsComponent {
-  constructor(public dialog: MatDialog){
+  constructor(public dialog: MatDialog,private  toaster: ToasterServices){
 
   }
-
+  test(){
+    this.toaster.success('hello')
+  }
   openModal(){
     const dialogConfig=new MatDialogConfig();
     dialogConfig.height='85vh';
