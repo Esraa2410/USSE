@@ -6,6 +6,19 @@
     </div>
     <div class="buttons_ ">
       <us-button
+      *ngIf="isDelete"
+        class="m-2"
+        label="Add list"
+        [matIcon]="'delete'"
+        [iconClass]="'material-symbols-outlined'"
+        [fill]="true"
+        [size]="'md'"
+        [loading]="false"
+        [disabled]="false"
+        [appearance]="'danger'"
+        (clicked)="openDeleteModal()"
+      ></us-button>
+      <us-button
         class="m-2"
         label="Add list"
         [matIcon]="'add'"
@@ -19,7 +32,7 @@
       <us-button
         class="m-2"
         label="Export All"
-        [matIcon]="'description'"
+        img="assets/icons/export.svg"
         [fill]="true"
         [size]="'md'"
         [loading]="false"
@@ -45,7 +58,7 @@
         <mat-icon class="tab-icon">format_list_bulleted</mat-icon>
         Lists
       </ng-template>
-      <app-lists ></app-lists>
+      <app-lists (isDelete)="onDeleteChange($event)"></app-lists>
     </mat-tab>
 
     <mat-tab>

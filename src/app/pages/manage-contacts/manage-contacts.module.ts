@@ -13,6 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManageContactsComponent } from './component/manage-contacts.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DeleteListComponent } from './components/lists/delete-list/delete-list.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ManageContactsComponent,
     ContactsComponent,
     ListsComponent,
+    DeleteListComponent,
     AddListComponent
   ],
   providers:[ManageContactsService]

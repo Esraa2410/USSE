@@ -10,6 +10,8 @@ export class UsButtonComponent implements OnInit {
   @Input() label:string = 'label';
   @Input() size:string = 'sm';
   @Input() matIcon:string = '';
+  @Input() iconClass:string = '';
+  @Input() img:string = '';
   @Input() loading:boolean = true;
   @Input() disabled:boolean = false;
   @Input() fill:boolean =true

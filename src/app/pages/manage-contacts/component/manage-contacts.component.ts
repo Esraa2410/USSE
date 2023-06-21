@@ -1,3 +1,4 @@
+import { DeleteListComponent } from './../components/lists/delete-list/delete-list.component';
 import { ToasterServices } from './../../../shared/components/us-toaster/us-toaster.component';
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -11,6 +12,7 @@ import { ListsComponent } from '../components/lists/lists.component';
 })
 export class ManageContactsComponent {
   added:boolean=false;
+  isDelete;
   @ViewChild(ListsComponent) lists:ListsComponent;
   constructor(public dialog: MatDialog,private  toaster: ToasterServices){
 
@@ -26,6 +28,24 @@ export class ManageContactsComponent {
     dialogConfig.minWidth='300px';
     dialogConfig.maxHeight='85vh';
     const dialogRef = this.dialog.open(AddListComponent,dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("added")
+      this.lists.getListData();
+    });
+  }
+  onDeleteChange(e){
+    this.isDelete = e
+  }
+  openDeleteModal(){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.height='85vh';
+    dialogConfig.width='35vw';
+    dialogConfig.maxWidth='100%';
+    dialogConfig.minWidth='300px';
+    dialogConfig.maxHeight='85vh';
+    dialogConfig.data = this.isDelete;
+    const dialogRef = this.dialog.open(DeleteListComponent,dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("added")

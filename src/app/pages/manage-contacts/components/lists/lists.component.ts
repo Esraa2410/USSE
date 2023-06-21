@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -32,12 +32,19 @@ length:number=0;
     private toaster: ToasterServices,
     private listService:ManageContactsService) {
   }
-
+  @Output() isDelete = new EventEmitter<ListData[]>;
   ngOnInit() {
     this.getListData();
     this.length=30;
-
-
+    this.selection.changed.subscribe(
+      (res) => {
+        console.log(res)
+        if(res.source.selected.length){
+          this.isDelete.emit(res.source.selected)
+        }else{
+          this.isDelete.emit()
+        }
+      });
   }
 
   ngAfterViewInit() {
@@ -394,8 +401,5 @@ console.log("from get api",this.dataSource)
     this.listService.search=event.value;
     console.log(this.listService.search);
     this.getListData();
-  }
-  checked(ev){
-console.log(ev)
   }
 }
