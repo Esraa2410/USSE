@@ -1,32 +1,14 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { SelectionModel} from '@angular/cdk/collections';
+import { MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddListComponent } from './addList/addList.component';
-
-
-const ELEMENT_DATA:any = [
-
-  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-  {name: 'Carbon',   create_at: '24 May 2023', total: "20,000"},
-  {name: 'Nitrogen', create_at: '24 May 2023', total: "20,000"},
-];
+import { ManageContactsService } from '../../manage-contacts.service';
+import { ToasterServices } from 'src/app/shared/components/us-toaster/us-toaster.component';
+import { ListData } from '../../list-data';
 
 @Component({
   selector: 'app-lists',
@@ -36,30 +18,315 @@ const ELEMENT_DATA:any = [
 
 
 export class ListsComponent implements OnInit ,AfterViewInit  {
+length:number=0;
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
   toppings = new FormControl('');
   @ViewChild(MatSort) sort: MatSort;
   toppingList: string[] = ['Name', 'Create At	', 'Total Contacts'];
-  constructor(public dialog: MatDialog) {
+  listTableData:ListData[]=[]
+  displayedColumns: string[] = ['select', 'name', 'createdAt', 'totalContacts',"edit"];
+  dataSource:MatTableDataSource<ListData>;
+  // dataSource = new MatTableDataSource<any>(this.listTableData);
+  selection = new SelectionModel<any>(true, []);
+  constructor(public dialog: MatDialog,
+    private toaster: ToasterServices,
+    private listService:ManageContactsService) {
   }
 
   ngOnInit() {
-    this.getData()
+    this.getListData();
+    this.length=30;
+
+
   }
+
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort
   }
 
-  displayedColumns: string[] = ['select', 'name', 'create_at', 'total',"edit"];
-  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
-  selection = new SelectionModel<any>(true, []);
-getData(){
-  console.log('Data returned successfully')
+
+getListData(){
+  let shows=this.listService.display;
+  let pageNum=this.listService.pageNum;
+  let email=this.listService.email;
+  let orderedBy=this.listService.orderedBy;
+  let search=this.listService.search;
+
+
+  console.log(`from git list data inside list component number of shows is:${shows} page number is ${pageNum} orderBy is ${orderedBy} search is ${search}`)
+  // this.listTableData=[
+  //   {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "sjfksjdflksjdlkjsdlkgj-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-05-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-07-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-09-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     }, {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     }, {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     }, {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     }, {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     }, {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Carbon",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     },
+  //     {
+  //       id: "ls_1edde628-4a50-49f9-9f3c-fd54b8b273ca",
+  //       name: "Nitrogen",
+  //       totalContacts: 0,
+  //       totalCancelContacts: 0,
+  //       createdAt: "2023-06-19T22:41:50.2533008Z",
+  //       isDeleted: false,
+  //       applicationUserId: "7ff2e9b7-be58-46e0-bea2-e3a200ff5ff0"
+  //     }
+
+  // ]
+
+  // let data=[];
+  // for (let index = 0; index < 5; index++) {
+  //   data.push(this.listTableData[index])
+
+  // }
+  // this.dataSource=new MatTableDataSource<ListData>(data)
+
+  this.listService.getList(email,shows,pageNum,orderedBy,search).subscribe(
+     (res)=>{
+        console.log(res);
+  this.dataSource=new MatTableDataSource<ListData>(res)
+console.log("from get api",this.dataSource)
+      },
+      (err)=>{
+        console.log(err);
+      })
 }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
+
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
@@ -85,16 +352,22 @@ getData(){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  edit(element){
-    console.log(element)
-  }
+
   onSortChange(event){
-    console.log(event)
-    this.dataSource.data
+    let sorting = event.active=='name' && event.direction=='asc'?'nameASC':
+                  event.active=='name' && event.direction=='desc'?'nameDEC':
+
+                  event.active=='createdAt' && event.direction=='asc'?'createdAtASC':
+                  event.active=='createdAt' && event.direction=='desc'?'createdAtDEC':
+                  '';
+    this.listService.orderedBy=sorting;
+    console.log("sorting from onSortChange function ",this.listService.orderedBy)
+    this.getListData();
+
   }
   onRowClick(row:any){}
 
-  openEditModal(data){
+  openEditModal(data?){
     const dialogConfig=new MatDialogConfig();
     dialogConfig.height='85vh';
     dialogConfig.width='35vw';
@@ -106,13 +379,23 @@ getData(){
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.getData()
+        this.getListData()
       }
     });
 
   }
-  onPageChange(e){
-    console.log(e)
-    this.getData()
+  onPageChange(event){
+    this.listService.display=event.pageSize;
+    this.listService.pageNum=event.pageIndex;
+    // console.log("onPageChange",this.listService.display,event);
+    this.getListData();
+  }
+  onSearch(event:any){
+    this.listService.search=event.value;
+    console.log(this.listService.search);
+    this.getListData();
+  }
+  checked(ev){
+console.log(ev)
   }
 }

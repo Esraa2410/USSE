@@ -1,7 +1,8 @@
 import { ToasterServices } from './../../../shared/components/us-toaster/us-toaster.component';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddListComponent } from '../components/lists/addList/addList.component';
+import { ListsComponent } from '../components/lists/lists.component';
 
 @Component({
   selector: 'app-manage-contacts',
@@ -9,6 +10,8 @@ import { AddListComponent } from '../components/lists/addList/addList.component'
   styleUrls: ['./manage-contacts.component.scss']
 })
 export class ManageContactsComponent {
+  added:boolean=false;
+  @ViewChild(ListsComponent) lists:ListsComponent;
   constructor(public dialog: MatDialog,private  toaster: ToasterServices){
 
   }
@@ -25,7 +28,8 @@ export class ManageContactsComponent {
     const dialogRef = this.dialog.open(AddListComponent,dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log("added")
+      this.lists.getListData();
     });
   }
 }

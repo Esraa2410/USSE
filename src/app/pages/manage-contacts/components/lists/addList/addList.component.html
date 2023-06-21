@@ -8,6 +8,7 @@
         src="assets/icons/close-circle.svg"
         (click)="onClose()"
         alt="close-icon"
+        style="cursor: pointer;"
       />
     </div>
   </div>
@@ -31,34 +32,22 @@
         </span>
       </span>
      <div class="row m-0 d-flex justify-content-center align-items-center my-4 ">
-      <div class="col-12 col-lg-10 p-0" style="cursor: pointer;">
+      <div class="col-lg-8 col-9 p-0" >
         <img
         class="w-100"
           src="assets/images/add-file.svg"
           alt=""
-          style="object-fit: contain;"
+          style="object-fit: contain;opacity: .9;"
+
         />
       </div>
      </div>
-      <!-- start-input -->
-      <!-- <div class="col-12 my-2 col-12 ">
-            <div class="form-floating mb-1">
-              <input [ngClass]="{'border-danger': name.invalid && name.touched,'c-2 fs-5': name.valid && name.touched}" formControlName="name" type="text" class="form-control" placeholder="-">
-              <label class="rounded-3" >List Name</label>
-            </div>
-            <span  *ngIf="name.invalid && name.touched" class="animate__animated anime-duration-800 animate__fadeInUp text-danger d-flex gap-1 rounded-2 bg-danger bg-opacity-10 p-2">
-              <mat-icon class="text-danger" style="height: 20px;width: 20px; font-size: 20px;">error</mat-icon>
-              <span class="text-danger text-wrap d-flex flex-column">
-                <span class="text-danger" *ngIf="name.errors.required">This filed is required</span>
-              </span>
-            </span>
-          </div> -->
-      <!-- end-input -->
+
     </form>
   </div>
   <!-- modal footer -->
   <div class="modal-footer justify-content-center gap-3"  style="height: 10%;">
-    <us-button
+    <us-button  *ngIf="!isEdit"
       label="Add"
       size="sm"
       [loading]="isLoading"
@@ -66,6 +55,15 @@
       (clicked)="submitAdd()"
       [disabled]="form.invalid || isLoading"
     ></us-button>
+    <us-button
+    *ngIf="isEdit"
+    label="Update"
+    size="sm"
+    [loading]="isLoading"
+    [fill]="true"
+    (clicked)="submitEdit()"
+    [disabled]="form.invalid || isLoading"
+  ></us-button>
     <us-button
       label="Cancel"
       size="sm"
