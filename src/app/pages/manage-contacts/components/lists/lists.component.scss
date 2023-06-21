@@ -1,33 +1,4 @@
-.table-wrapper{
-  table{
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    overflow: hidden;
-    ::ng-deep {
-      thead{
-        background: var(--clr-primary-400) !important;
-        tr{
-          height: 40px;
-          th{
-            background: transparent;
-          }
-        }
-      }
 
-    }
-  }
-  mat-paginator{
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    ::ng-deep .mat-mdc-paginator-container{
-      justify-content: space-between;
-      padding: 10px;
-    }
-  }
-}
 
 .pointer{
   cursor: pointer;
