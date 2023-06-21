@@ -600,3 +600,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .w-fit{
   width: fit-content !important;
 }
+// start table override
+  table{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+      thead{
+        background: var(--clr-primary-400) !important;
+        tr{
+          height: 40px !important;
+          th{
+            background: transparent !important;
+          }
+        }
+      }
+  }
+  mat-paginator{
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    ::ng-deep .mat-mdc-paginator-container{
+      justify-content: space-between;
+      padding: 10px;
+    }
+  }
+// end table override
