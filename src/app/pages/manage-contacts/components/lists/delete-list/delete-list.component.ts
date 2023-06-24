@@ -10,7 +10,8 @@ import { ListData } from '../../../list-data';
   styleUrls: ['./delete-list.component.scss']
 })
 export class DeleteListComponent implements OnInit {
-
+  isLoading = false;
+  numOfItems:number=0;
   constructor(
     private toaster: ToasterServices,
     private listService:ManageContactsService,
@@ -21,19 +22,32 @@ export class DeleteListComponent implements OnInit {
   ngOnInit() {
     console.log(this.data)
     let body = this.data.map(res=>res.id)
+    this.numOfItems=body.length;
     console.log(body)
   }
+
   submit(){
+    this.isLoading = true
     let body = this.data.map(res=>res.id)
     this.listService.deleteList('khamis.safy@gmail.com',body).subscribe(
       (res)=>{
-    console.log(res)
+        this.isLoading = false
+        console.log(res)
+        this.onClose();
+        this.toaster.success("Success")
 
       },
       (err)=>{
+        this.isLoading = false
         console.log(err)
+        this.onClose();
+        this.toaster.error("Error")
 
       }
     )
+  }
+  onClose(): void {
+    this.dialogRef.close();
+    console.log("onClose")
   }
 }

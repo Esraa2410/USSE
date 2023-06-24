@@ -19,6 +19,7 @@ import { ListData } from '../../list-data';
 
 export class ListsComponent implements OnInit ,AfterViewInit  {
 length:number=0;
+active:boolean=false;
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
   toppings = new FormControl('');
   @ViewChild(MatSort) sort: MatSort;
@@ -33,15 +34,20 @@ length:number=0;
     private listService:ManageContactsService) {
   }
   @Output() isDelete = new EventEmitter<ListData[]>;
+
   ngOnInit() {
+    this.getListsCount();
+    // this.length=10
     this.getListData();
-    this.length=30;
+
     this.selection.changed.subscribe(
       (res) => {
-        console.log(res)
+        console.log("selected data",res)
         if(res.source.selected.length){
+          console.log("selected",res.source.selected)
           this.isDelete.emit(res.source.selected)
-        }else{
+        }
+        else{
           this.isDelete.emit()
         }
       });
@@ -51,7 +57,18 @@ length:number=0;
     // this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort
   }
+getListsCount(){
+  let email=this.listService.email;
 
+  this.listService.ListsCount(email).subscribe(
+    (res)=>{
+      this.length=res;
+      console.log("pages count",res);
+
+    }
+    ,(err)=>{console.log(err)}
+  )
+}
 
 getListData(){
   let shows=this.listService.display;
@@ -334,7 +351,7 @@ console.log("from get api",this.dataSource)
   isAllSelected() {
     const numSelected = this.selection.selected.length;
 
-    const numRows = this.dataSource.data.length;
+    const numRows = this.length;
     return numSelected === numRows;
   }
 
@@ -386,6 +403,7 @@ console.log("from get api",this.dataSource)
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
+        this.getListsCount();
         this.getListData()
       }
     });
@@ -401,5 +419,16 @@ console.log("from get api",this.dataSource)
     this.listService.search=event.value;
     console.log(this.listService.search);
     this.getListData();
+  }
+  toggleActive(data?){
+    if(data){
+      console.log("row data",data)
+    }
+    console.log("active before",this.active)
+    this.active=!this.active;
+    console.log("active after",this.active)
+  }
+  selectedRow(event){
+    console.log("selected row",event)
   }
 }

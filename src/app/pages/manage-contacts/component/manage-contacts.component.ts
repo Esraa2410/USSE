@@ -8,7 +8,8 @@ import { ListsComponent } from '../components/lists/lists.component';
 @Component({
   selector: 'app-manage-contacts',
   templateUrl: './manage-contacts.component.html',
-  styleUrls: ['./manage-contacts.component.scss']
+  styleUrls: ['./manage-contacts.component.scss'],
+
 })
 export class ManageContactsComponent {
   added:boolean=false;
@@ -30,26 +31,30 @@ export class ManageContactsComponent {
     const dialogRef = this.dialog.open(AddListComponent,dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("added")
+      this.lists.getListsCount();
       this.lists.getListData();
     });
   }
   onDeleteChange(e){
-    this.isDelete = e
+    this.isDelete = e;
+    console.log("onDeleteChange",e)
   }
   openDeleteModal(){
     const dialogConfig=new MatDialogConfig();
-    dialogConfig.height='85vh';
+    dialogConfig.height='50vh';
     dialogConfig.width='35vw';
     dialogConfig.maxWidth='100%';
     dialogConfig.minWidth='300px';
-    dialogConfig.maxHeight='85vh';
     dialogConfig.data = this.isDelete;
     const dialogRef = this.dialog.open(DeleteListComponent,dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("added")
+      this.lists.getListsCount();
       this.lists.getListData();
+      this.lists.selection.clear();
+      console.log("delete afterClosed",this.lists.selection)
+
     });
   }
+
 }

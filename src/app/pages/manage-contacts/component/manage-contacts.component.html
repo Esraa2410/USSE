@@ -1,15 +1,17 @@
 <section class="p-3">
-  <div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-between mb-4 align-items-center">
     <div class="d-flex justify-content-center ">
-      <mat-icon class="tab-icon">recent_actors</mat-icon>
-   <span > Manage Contacts</span>
+      <img src="assets/icons/manage-contacts.svg" alt="" class="px-2">
+
+      <!-- <mat-icon class="tab-icon">recent_actors</mat-icon> -->
+   <span class="txt-lg main-heading"> Manage Contacts</span>
     </div>
     <div class="buttons_ ">
       <us-button
       *ngIf="isDelete"
         class="m-2"
-        label="Add list"
-        [matIcon]="'delete'"
+        label="Delete"
+        img="assets/icons/delete.svg"
         [iconClass]="'material-symbols-outlined'"
         [fill]="true"
         [size]="'md'"
@@ -43,28 +45,36 @@
     </div>
 
   </div>
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" color="transparent">
 
     <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon class="tab-icon">contacts</mat-icon>
-        Contacts
+      <ng-template mat-tab-label class="txt-md">
+        <img src="assets/icons/contacts.svg" alt="" class="px-2">
+        <!-- <mat-icon class="tab-icon">contacts</mat-icon> -->
+          Contacts
       </ng-template>
       <app-contacts></app-contacts>
     </mat-tab>
 
     <mat-tab>
       <ng-template mat-tab-label>
-        <mat-icon class="tab-icon">format_list_bulleted</mat-icon>
-        Lists
+        <img src="assets/icons/lists.svg" alt="" class="px-2">
+          Lists
+        <!-- <mat-icon class="tab-icon">format_list_bulleted</mat-icon> -->
+
       </ng-template>
       <app-lists (isDelete)="onDeleteChange($event)"></app-lists>
     </mat-tab>
 
     <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon class="tab-icon">unsubscribe</mat-icon>
-        Unsubscribed
+      <ng-template mat-tab-label >
+        <img src="assets/icons/unsubscribe.svg" alt="" class="px-2">
+
+          Unsubscribed
+
+        <!-- <mat-icon class="tab-icon">unsubscribe</mat-icon> -->
+
       </ng-template>
     </mat-tab>
   </mat-tab-group>

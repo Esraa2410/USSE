@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment as env } from '@env/environment.development';
 import { Observable } from 'rxjs';
-import { ListData } from './list-data';
+import { ErrSucc, ListData } from './list-data';
+import { Contacts } from './contacts';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class ManageContactsService {
     search:string="";
   constructor(private http:HttpClient) { }
 
-  addList(name:string,email:string): Observable<ListData>{
+// lists methods
+addList(name:string,email:string): Observable<ListData>{
     const data ={
     name:name,
     email:email
@@ -32,12 +34,53 @@ const data ={
   return this.http.put<ListData>(`${env.api}Contacts/updateList`,data)
 }
 
-deleteList(email:string,listArr:string[]): Observable<any>{
-  return this.http.put(`${env.api}Contacts/deleteList?email=${email}`,listArr)
+deleteList(email:string,listArr:string[]): Observable<ErrSucc>{
+  return this.http.put<ErrSucc>(`${env.api}Contacts/deleteList?email=${email}`,listArr)
 }
-getList(email:string,showsNum:number,pageNum:number,orderedBy:string,search:string):Observable<any>{
-  return this.http.get(`${env.api}Contacts/listLists?email=${email}&take=${showsNum}&scroll=${pageNum}&orderedBy=${orderedBy}&search=${search}`)
+getList(email:string,showsNum:number,pageNum:number,orderedBy:string,search:string):Observable<ListData[]>{
+  return this.http.get<ListData[]>(`${env.api}Contacts/listLists?email=${email}&take=${showsNum}&scroll=${pageNum}&orderedBy=${orderedBy}&search=${search}`)
 }
-// 'http://dev-smpp.uaenorth.cloudapp.azure.com:5300/api/Contacts/listLists?email=khamis.safy%40gmail.com&take=2&scroll=0&orderedBy=nameASC&search=l'
+ListsCount(email:string):Observable<number>{
+  return this.http.get<number>(`${env.api}Contacts/listListsCount?email=${email}`)
+}
 
+unDeleteList(email:string,ids:string[]):Observable<ErrSucc>{
+  return this.http.put<ErrSucc>(`${env.api}Contacts/unDeleteList?email=${email}`,ids)
+}
+
+// contacts methods
+getContacts(email:string,showsNum:number,pageNum:number,orderedBy:string,search:string):Observable<Contacts[]>{
+  return this.http.get<Contacts[]>(`${env.api}Contacts/listContacts?email=${email}&take=${showsNum}&scroll=${pageNum}&orderedBy=${orderedBy}&search=${search}`)
+}
+
+addContact(name:string,mobileNumber:string,companyName:string,note:string,email:string,listId:string[]):Observable<Contacts>{
+  const data={
+    name:name,
+    mobileNumber:mobileNumber,
+    companyName:companyName,
+    note:note,
+    email: email,
+    listId:listId
+  }
+  return this.http.post<Contacts>(`${env.api}Contacts/addNewContact`,data)
+}
+
+updateContact(id:string,name:string,mobileNumber:string,companyName:string,note:string,email:string):Observable<any>{
+  const data={
+    id:id,
+    name: name,
+    mobileNumber: mobileNumber,
+    companyName: companyName,
+    note: note,
+    email: email
+
+  }
+  return this.http.put(`${env.api}Contacts/updateContact`,data)
+}
+deleteContact(email:string,listIDs:string[]): Observable<ErrSucc>{
+  return this.http.put<ErrSucc>(`${env.api}Contacts/deleteContact?email=${email}`,listIDs)
+}
+contactsCount(email:string):Observable<number>{
+  return this.http.get<number>(`${env.api}Contacts/listContactsCount?email=${email}`)
+}
 }

@@ -40,16 +40,27 @@ a {
             color: #0a4d68 !important;
             font-weight: 500 !important;
           }
+          img{
+            filter : invert(20%) sepia(77%) saturate(814%) hue-rotate(159deg) brightness(39%) contrast(93%);
+          }
         }
         .active {
           background: linear-gradient(0deg, #eef4f9, #eef4f9), #ffffff;
           border-radius: 8px;
           color: #0a4d68 !important;
           font-weight: 500 !important;
+          img{
+            filter : invert(20%) sepia(77%) saturate(814%) hue-rotate(159deg) brightness(39%) contrast(93%);
+          }
         }
       }
     }
   }
+  // border: 3px solid;
+
+
+
+
   .user-img {
     width: 52px;
     height: 52px;
@@ -84,11 +95,7 @@ a {
     width: 20px;
     height: 20px;
 
-    &:hover{
-      img{
-        filter : invert(20%) sepia(77%) saturate(814%) hue-rotate(159deg) brightness(39%) contrast(93%);
-      }
-    }
+
   }
 }
 

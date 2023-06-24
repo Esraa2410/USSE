@@ -7,3 +7,8 @@ export interface ListData {
   isDeleted: boolean,
   applicationUserId: string
 }
+export interface ErrSucc{
+  numberOfSuccess:number,
+  numberOfErrors: number,
+  errorDetails: string[]
+}

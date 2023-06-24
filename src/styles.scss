@@ -600,7 +600,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .w-fit{
   width: fit-content !important;
 }
+
+// search
+#search{
+  width: 389px;
+  height: 42px;
+  border-radius: 16px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  border: none;
+}
 // start table override
+section.table-wrapper {
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border-radius: 24px 24px !important;}
+
   table{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -614,7 +627,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
           }
         }
       }
+      .mat-icon.mat-primary {
+        color:var(--clr-primary-700);
+        font-size: 20px;
+
+    }
+    span{
+      color:var(--clr-primary-700);
+    }
   }
+  .mat-mdc-table .mdc-data-table__row {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    &:hover{
+      background-color: #eef4f9c2 !important;
+      // border-left: 3px solid var(--clr-primary-700);
+    }
+
+  }
+   .active-row{
+      background-color: #eef4f9c2 !important;
+      border-left: 3px solid var(--clr-primary-700) !important;
+    }
+
+
   mat-paginator{
     position: sticky;
     bottom: 0;
@@ -626,4 +663,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       padding: 10px;
     }
   }
+  .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+    background-color:var(--clr-primary-700) !important;
+  }
+  .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background{
+    background-color:var(--clr-primary-700) !important;
+
+  }
+  .mat-mdc-checkbox .mdc-checkbox__ripple {
+    background: transparent !important;
+  }
+
 // end table override
